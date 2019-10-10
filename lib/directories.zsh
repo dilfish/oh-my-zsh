@@ -36,3 +36,12 @@ alias lsa='ls -lah'
 alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
+
+
+
+# added by sean
+
+alias sophon='cd /Users/seanzhang/qiniu/net-sophon/src/qiniu.com/fusionsophon'
+alias gslb='cd /Users/seanzhang/qiniu/net-gslb/src/qiniu.com/fusionartisan'
+alias dns='cd /Users/seanzhang/qiniu/net-scheduler/QiniuANS/src/service/qansd'
+alias cdnmon='cd /Users/seanzhang/qiniu/net-cdnmon/src/qiniu.com/fusionartisan'
