@@ -131,3 +131,5 @@ fi
 #export GODEBUG=http2debug=2
 export GOPATH=/Users/seanzhang/go/:/Users/seanzhang/qiniu/net-cdnmon/:/Users/seanzhang/qiniu/net-base:/Users/seanzhang/qiniu/base/qiniu:/Users/seanzhang/qiniu/base/account-api:/Users/seanzhang/qiniu/base/docs:/Users/seanzhang/qiniu/base/com:/Users/seanzhang/qiniu/base/biz:/Users/seanzhang/qiniu/base/portal:/Users/seanzhang/qiniu/base/cgo:/Users/seanzhang/qiniu/base/mockacc:/Users/seanzhang/qiniu/net-sophon:/Users/seanzhang/qiniu/net-gslb/
 export GO111MODULE=off
+alias c="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias pj="python -m json.tool"
