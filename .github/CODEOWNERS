@@ -1,1 +1,5 @@
-plugins/gitfast/ @felipec
+# Plugin owners
+plugins/aws/                        @maksyms
+plugins/git-lfs/                    @vietduc01100001
+plugins/gitfast/                    @felipec
+plugins/sdk/                        @rgoldberg
