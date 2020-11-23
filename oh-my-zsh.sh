@@ -137,13 +137,13 @@ if [ -f /etc/bash.command-not-found ]; then
     source /etc/bash.command-not-found
 fi
 
-#export GODEBUG=http2debug=2
-export GOPATH=/Users/seanzhang/go/:/Users/seanzhang/qiniu/net-cdnmon/:/Users/seanzhang/qiniu/net-base:/Users/seanzhang/qiniu/base/qiniu:/Users/seanzhang/qiniu/base/account-api:/Users/seanzhang/qiniu/base/docs:/Users/seanzhang/qiniu/base/com:/Users/seanzhang/qiniu/base/biz:/Users/seanzhang/qiniu/base/portal:/Users/seanzhang/qiniu/base/cgo:/Users/seanzhang/qiniu/base/mockacc:/Users/seanzhang/qiniu/net-sophon:/Users/seanzhang/qiniu/net-gslb/:/Users/seanzhang/qiniu/net-saas/:/Users/seanzhang/qiniu/cdnops/
+export GODEBUG=http2debug=2
 export GOROOT=/usr/local/go
-
 alias c="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias pj="python -m json.tool"
-export PATH=$PATH:/Users/seanzhang/go/bin/
+export PATH=$PATH:/Users/dilfish/go/bin/
 export PATH=$PATH:/usr/local/mysql/bin/
 alias python='/usr/local/bin/python3'
-export GO111MODULE=off
+export GO111MODULE=on
+alias 'python'='python3'
+alias gol='export GOOS=linux GOARCH=amd64; go build'
