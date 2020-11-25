@@ -137,7 +137,7 @@ if [ -f /etc/bash.command-not-found ]; then
     source /etc/bash.command-not-found
 fi
 
-export GODEBUG=http2debug=2
+#export GODEBUG=http2debug=2
 export GOROOT=/usr/local/go
 alias c="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias pj="python -m json.tool"
@@ -147,3 +147,7 @@ alias python='/usr/local/bin/python3'
 export GO111MODULE=on
 alias 'python'='python3'
 alias gol='export GOOS=linux GOARCH=amd64; go build'
+alias dcs='docker container stop'
+alias dcr='docker container rm'
+alias dcl='docker container ls -a'
+alias dil='docker image ls -a'
