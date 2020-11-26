@@ -143,6 +143,7 @@ alias c="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias pj="python -m json.tool"
 export PATH=$PATH:/Users/dilfish/go/bin/
 export PATH=$PATH:/usr/local/mysql/bin/
+export PATH=$PATH:/usr/local/mongodb-macos-x86_64-4.4.2/bin
 alias python='/usr/local/bin/python3'
 export GO111MODULE=on
 alias 'python'='python3'
