@@ -147,8 +147,9 @@ export PATH=$PATH:/usr/local/mongodb-macos-x86_64-4.4.2/bin
 alias python='/usr/local/bin/python3'
 export GO111MODULE=on
 alias 'python'='python3'
-alias gol='export GOOS=linux GOARCH=amd64; go build'
+alias gol='export GOOS=linux GOARCH=amd64; go build; export GOOS="" GOARCH=""'
 alias dcs='docker container stop'
 alias dcr='docker container rm'
 alias dcl='docker container ls -a'
 alias dil='docker image ls -a'
+alias curls='echo "curl https://dilfish.dev --resolve dilfish.dev:443:119.28.7.122"'
