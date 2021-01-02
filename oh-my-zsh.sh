@@ -155,4 +155,3 @@ alias dil='docker image ls -a'
 alias curls='echo "curl https://dilfish.dev --resolve dilfish.dev:443:119.28.7.122"'
 alias gpum='git pull upstream master'
 alias gpud='git pull upstream develop'
-alias ls9="ls -la | awk '{print \$9}'"
