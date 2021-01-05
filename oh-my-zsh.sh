@@ -156,3 +156,4 @@ alias curls='echo "curl https://dilfish.dev --resolve dilfish.dev:443:119.28.7.1
 alias gpum='git pull upstream master'
 alias gpud='git pull upstream develop'
 alias ls9="ls -la | awk '{print \$9}'"
+alias curl13='/usr/local/opt/curl/bin/curl --tlsv1.3 '
