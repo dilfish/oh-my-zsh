@@ -155,3 +155,6 @@ alias dil='docker image ls -a'
 alias curls='echo "curl https://dilfish.dev --resolve dilfish.dev:443:119.28.7.122"'
 alias gpum='git pull upstream master'
 alias gpud='git pull upstream develop'
+export PATH=$PATH:/usr/local/go/bin/
+# for linux
+export PATH=$PATH:/root/go/bin/
