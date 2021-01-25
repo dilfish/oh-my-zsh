@@ -18,17 +18,17 @@ export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 export SSLKEYLOGFILE=/tmp/sslkeylog.log
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH=$PATH:/Users/seanzhang/go/src/bin
+export PATH=$PATH:/Users/dilfish/go/src/bin
 alias date='date +"%Y-%m-%d %H:%M.%S"'
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/seanzhang/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/dilfish/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/seanzhang/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/seanzhang/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/dilfish/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/dilfish/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/seanzhang/miniconda3/bin:$PATH"
+        export PATH="/Users/dilfish/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
