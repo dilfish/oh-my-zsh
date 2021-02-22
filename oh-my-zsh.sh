@@ -139,7 +139,7 @@ fi
 
 #export GODEBUG=http2debug=2
 export GOROOT=/usr/local/go
-alias c="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias cm="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias pj="python -m json.tool"
 export PATH=$PATH:/Users/dilfish/go/bin/
 export PATH=$PATH:/usr/local/mysql/bin/
@@ -156,6 +156,9 @@ alias curls='echo "curl https://dilfish.dev --resolve dilfish.dev:443:119.28.7.1
 alias gpum='git pull upstream master'
 alias gpud='git pull upstream develop'
 alias ls9="ls -la | awk '{print \$9}'"
+alias curl3="/usr/local/bin/curl"
+alias curl2="/usr/local/opt/curl/bin/curl"
+alias runm="mongod --config /usr/local/etc/mongod.conf"
 export PATH=$PATH:/usr/local/go/bin/
 export PATH=$PATH:/usr/local/nginx/sbin/
 # for linux
@@ -164,3 +167,4 @@ export PATH=$PATH:/root/go/bin/
 export PATH=$PATH:/Users/dilfish/go/bin
 
 export PATH=$PATH:/usr/local/bin
+export SSLKEYLOGFILE=/Users/dilfish/sslkeylogfile
