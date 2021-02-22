@@ -157,6 +157,7 @@ alias gpum='git pull upstream master'
 alias gpud='git pull upstream develop'
 alias ls9="ls -la | awk '{print \$9}'"
 export PATH=$PATH:/usr/local/go/bin/
+export PATH=$PATH:/usr/local/nginx/sbin/
 # for linux
 export PATH=$PATH:/root/go/bin/
 # for mac
