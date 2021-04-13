@@ -159,6 +159,8 @@ alias ls9="ls -la | awk '{print \$9}'"
 alias curl3="/usr/local/bin/curl"
 alias curl2="/usr/local/opt/curl/bin/curl"
 alias runm="mongod --config /usr/local/etc/mongod.conf"
+alias gb="go build"
+alias gt="go test"
 export PATH=$PATH:/usr/local/go/bin/
 export PATH=$PATH:/usr/local/nginx/sbin/
 # for linux
