@@ -70,3 +70,9 @@ function hg_get_bookmark_name() {
     echo $(hg id -B)
   fi
 }
+
+function hg_get_bookmark_name() {
+  if [ $(in_hg) ]; then
+    echo $(hg id -B)
+  fi
+}
