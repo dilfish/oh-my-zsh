@@ -161,6 +161,12 @@ alias curl2="/usr/local/opt/curl/bin/curl"
 alias runm="mongod --config /usr/local/etc/mongod.conf"
 alias gb="go build"
 alias gt="go test"
+
+function gmi() {
+    go mod init github.com/dilfish/$1
+    go mod tidy
+}
+
 export PATH=$PATH:/usr/local/go/bin/
 export PATH=$PATH:/usr/local/nginx/sbin/
 # for linux
@@ -170,3 +176,7 @@ export PATH=$PATH:/Users/dilfish/go/bin
 
 export PATH=$PATH:/usr/local/bin
 export SSLKEYLOGFILE=/Users/dilfish/sslkeylogfile
+export GOPROXY=https://goproxy.cn
+source /usr/local/opt/resty/share/resty/resty
+export QBOXROOT=/Users/dilfish/qiniu
+export PATH=$PATH:/usr/local/Cellar/rabbitmq/3.8.16/sbin
