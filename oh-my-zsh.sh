@@ -175,8 +175,10 @@ export PATH=$PATH:/root/go/bin/
 export PATH=$PATH:/Users/dilfish/go/bin
 
 export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/Applications/Julia-1.6.app/Contents/Resources/julia/bin
 export SSLKEYLOGFILE=/Users/dilfish/sslkeylogfile
 export GOPROXY=https://goproxy.cn
 source /usr/local/opt/resty/share/resty/resty
 export QBOXROOT=/Users/dilfish/qiniu
 export PATH=$PATH:/usr/local/Cellar/rabbitmq/3.8.16/sbin
+source ~/.iterm2_shell_integration.zsh
