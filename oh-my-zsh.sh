@@ -162,10 +162,16 @@ alias runm="mongod --config /usr/local/etc/mongod.conf"
 alias gb="go build"
 alias gt="go test"
 alias exifmod='exiftool -GPSDateStamp="1970:01:02" -GPSDateStamp=0 -GPSLongitude=180 -GPSLatitude=90 -GPSAltitude=8848.86 -software="Windows 1.1.330(2QEMT35U3X1)" -model="Isaac Newton" -DateTime="1970:01:01 00:00:03" -DateTimeDigital="1970:01:01 00:00:04" -DateTimeOriginal="1970:01:01 00:00:07" -CreateDate="1970:01:01 00:00:05" -ModifyDate="1970:01:01 00:00:06" -Make="Albert Einstein" -Manufacturer="James Clerk Maxwell" -HostComputer="Richard Feynman" -ContentIdentifier="Galileo Galilei" -ProfileCopyright="CarlFGauss" -DateCreated="1970:01:01 00:00:07"'
+alias ocurl="/usr/local/opt/curl/bin/curl"
+alias ggb="go build -\"gcflags=-G=3\""
 
 function gmi() {
     go mod init github.com/dilfish/$1
     go mod tidy
+}
+
+function randstr() {
+    cat /dev/urandom | base64 | fold -w $1 | head
 }
 
 export PATH=$PATH:/usr/local/go/bin/
