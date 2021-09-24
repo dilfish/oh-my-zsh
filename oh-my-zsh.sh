@@ -141,7 +141,6 @@ fi
 export GOROOT=/usr/local/go
 alias cm="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias pj="python -m json.tool"
-export PATH=$PATH:/Users/dilfish/go/bin/
 export PATH=$PATH:/usr/local/mysql/bin/
 export PATH=$PATH:/usr/local/mongodb-macos-x86_64-4.4.2/bin
 alias python='/usr/local/bin/python3'
@@ -183,11 +182,11 @@ if [[ "$OSTYPE" = linux-gnu ]]; then
 # for mac
 else
     export PATH=$PATH:/Users/dilfish/go/bin
+    export SSLKEYLOGFILE=/Users/dilfish/sslkeylogfile
 fi
 
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/Applications/Julia-1.6.app/Contents/Resources/julia/bin
-#export SSLKEYLOGFILE=/Users/dilfish/sslkeylogfile
 export GOPROXY=https://goproxy.cn
 #source /usr/local/opt/resty/share/resty/resty
 export QBOXROOT=/Users/dilfish/qiniu
