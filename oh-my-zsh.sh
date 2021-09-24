@@ -161,10 +161,16 @@ alias curl2="/usr/local/opt/curl/bin/curl"
 alias runm="mongod --config /usr/local/etc/mongod.conf"
 alias gb="go build"
 alias gt="go test"
+alias ocurl="/usr/local/opt/curl/bin/curl"
+alias ggb="go build -\"gcflags=-G=3\""
 
 function gmi() {
     go mod init github.com/dilfish/$1
     go mod tidy
+}
+
+function randstr() {
+    cat /dev/urandom | base64 | fold -w $1 | head
 }
 
 export PATH=$PATH:/usr/local/go/bin/
