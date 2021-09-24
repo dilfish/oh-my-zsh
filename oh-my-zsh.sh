@@ -176,10 +176,14 @@ function randstr() {
 
 export PATH=$PATH:/usr/local/go/bin/
 export PATH=$PATH:/usr/local/nginx/sbin/
+
 # for linux
-export PATH=$PATH:/root/go/bin/
+if [[ "$OSTYPE" = linux-gnu ]]; then
+    export PATH=$PATH:/root/go/bin/
 # for mac
-export PATH=$PATH:/Users/dilfish/go/bin
+else
+    export PATH=$PATH:/Users/dilfish/go/bin
+fi
 
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/Applications/Julia-1.6.app/Contents/Resources/julia/bin
