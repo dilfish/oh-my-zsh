@@ -159,6 +159,7 @@ alias curl3="/usr/local/bin/curl"
 alias curl2="/usr/local/opt/curl/bin/curl"
 alias runm="mongod --config /usr/local/etc/mongod.conf"
 alias gb="go build"
+alias gi="go install"
 alias gt="go test"
 alias exifmod='exiftool -GPSDateStamp="1970:01:02" -GPSDateStamp=0 -GPSLongitude=180 -GPSLatitude=90 -GPSAltitude=8848.86 -software="Windows 1.1.330(2QEMT35U3X1)" -model="Isaac Newton" -DateTime="1970:01:01 00:00:03" -DateTimeDigital="1970:01:01 00:00:04" -DateTimeOriginal="1970:01:01 00:00:07" -CreateDate="1970:01:01 00:00:05" -ModifyDate="1970:01:01 00:00:06" -Make="Albert Einstein" -Manufacturer="James Clerk Maxwell" -HostComputer="Richard Feynman" -ContentIdentifier="Galileo Galilei" -ProfileCopyright="CarlFGauss" -DateCreated="1970:01:01 00:00:07"'
 alias ocurl="/usr/local/opt/curl/bin/curl"
