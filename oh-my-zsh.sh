@@ -168,6 +168,7 @@ done
 unset config_file
 
 # Load the theme
+# ZSH_THEME='random'
 if [ ! "$ZSH_THEME" = ""  ]; then
   if [ -f "$ZSH_CUSTOM/$ZSH_THEME.zsh-theme" ]; then
     source "$ZSH_CUSTOM/$ZSH_THEME.zsh-theme"
@@ -205,14 +206,17 @@ alias gpum='git pull upstream master'
 alias gpud='git pull upstream develop'
 alias ls9="ls -la | awk '{print \$9}'"
 alias curl2="/usr/bin/curl"
-alias curl3="/usr/local/opt/curl/bin/curl"
+alias curl3="/usr/local/Cellar/curl/7.80.0/bin/curl"
 alias runm="mongod --config /usr/local/etc/mongod.conf"
 alias gb="go build"
 alias gi="go install"
 alias gt="go test"
 alias emoji="curl https://dilfish.icu/emoji"
 alias exifmod='exiftool -GPSDateStamp="1970:01:02" -GPSDateStamp=0 -GPSLongitude=180 -GPSLatitude=90 -GPSAltitude=8848.86 -software="Windows 1.1.330(2QEMT35U3X1)" -model="Isaac Newton" -DateTime="1970:01:01 00:00:03" -DateTimeDigital="1970:01:01 00:00:04" -DateTimeOriginal="1970:01:01 00:00:07" -CreateDate="1970:01:01 00:00:05" -ModifyDate="1970:01:01 00:00:06" -Make="Albert Einstein" -Manufacturer="James Clerk Maxwell" -HostComputer="Richard Feynman" -ContentIdentifier="Galileo Galilei" -ProfileCopyright="CarlFGauss" -DateCreated="1970:01:01 00:00:07"'
-alias ggb="go build -\"gcflags=-G=3\""
+function ggb() {
+    go build
+    export GOROOT="/usr/local/go"
+}
 
 function gmi() {
     go mod init github.com/dilfish/$1
@@ -221,6 +225,11 @@ function gmi() {
 
 function randstr() {
     cat /dev/urandom | base64 | fold -w $1 | head
+}
+
+function limaenv() {
+    export DOCKER_HOST=$(limactl list docker --format 'unix://{{.Dir}}/sock/docker.sock')
+    unset DOCKER_TLS_VERIFY
 }
 
 export PATH=$PATH:/usr/local/go/bin/
@@ -242,3 +251,7 @@ export GOPROXY=https://goproxy.cn
 export QBOXROOT=/Users/dilfish/qiniu
 export PATH=$PATH:/usr/local/Cellar/rabbitmq/3.8.16/sbin
 #source ~/.iterm2_shell_integration.zsh
+#
+export GITHUB_TOKEN=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
+export PATH=$PATH:/Users/dilfish/.cargo/bin/
+export DOCKER_HOST='unix:///Users/dilfish/.lima/docker/sock/docker.sock'
