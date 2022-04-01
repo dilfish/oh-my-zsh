@@ -166,10 +166,16 @@ for config_file ("$ZSH_CUSTOM"/*.zsh(N)); do
 done
 unset config_file
 
+
 # Load the theme
-# ZSH_THEME='random'
-if [ ! "$ZSH_THEME" = ""  ]; then
-  if [ -f "$ZSH_CUSTOM/$ZSH_THEME.zsh-theme" ]; then
+is_theme() {
+  local base_dir=$1
+  local name=$2
+  builtin test -f $base_dir/$name.zsh-theme
+}
+
+if [[ -n "$ZSH_THEME" ]]; then
+  if is_theme "$ZSH_CUSTOM" "$ZSH_THEME"; then
     source "$ZSH_CUSTOM/$ZSH_THEME.zsh-theme"
   elif is_theme "$ZSH_CUSTOM/themes" "$ZSH_THEME"; then
     source "$ZSH_CUSTOM/themes/$ZSH_THEME.zsh-theme"
@@ -179,8 +185,6 @@ if [ ! "$ZSH_THEME" = ""  ]; then
     echo "[oh-my-zsh] theme '$ZSH_THEME' not found"
   fi
 fi
-
-
 
 
 #Bash Insulter
