@@ -196,11 +196,11 @@ fi
 export GOROOT=/usr/local/go
 alias cm="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias pj="python -m json.tool"
+alias p="python3"
 export PATH=$PATH:/usr/local/mysql/bin/
 export PATH=$PATH:/usr/local/mongodb-macos-x86_64-4.4.2/bin
 alias python='/usr/local/bin/python3'
 export GO111MODULE=on
-alias 'python'='python3'
 alias gol='export GOOS=linux GOARCH=amd64; go build; export GOOS="" GOARCH=""'
 alias dcs='docker container stop'
 alias dcr='docker container rm'
@@ -260,3 +260,5 @@ export PATH=$PATH:/usr/local/Cellar/rabbitmq/3.8.16/sbin
 export GITHUB_TOKEN=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
 export PATH=$PATH:/Users/dilfish/.cargo/bin/
 export DOCKER_HOST='unix:///Users/dilfish/.lima/docker/sock/docker.sock'
+export PATH=$PATH:/Users/dilfish/go/bin
+export GOPATH=/Users/dilfish/go
