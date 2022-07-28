@@ -41,7 +41,7 @@ alias la='ls -lAh'
 
 # added by sean
 
-alias sophon='cd /Users/dilfish/qiniu/net-sophon/src/qiniu.com/fusionsophon'
-alias gslb='cd /Users/dilfish/qiniu/net-gslb/src/qiniu.com/fusionartisan'
+alias sophon='cd /Users/dilfish/qiniu/net-sophon/'
+alias gslb='cd /Users/dilfish/qiniu/net-gslb/'
 alias dns='cd /Users/dilfish/qiniu/net-scheduler/QiniuANS/src/service/qansd'
-alias cdnmon='cd /Users/dilfish/qiniu/net-cdnmon/src/qiniu.com/fusionartisan'
+alias cdnmon='cd /Users/dilfish/qiniu/net-cdnmon/'
