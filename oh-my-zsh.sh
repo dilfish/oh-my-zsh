@@ -194,14 +194,19 @@ fi
 
 #export GODEBUG=http2debug=2
 export GOROOT=/usr/local/go
-alias cm="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias goproxy='export http_proxy=http://127.0.0.1:1087 https_proxy=http://127.0.0.1:1087'
+alias disproxy='unset http_proxy https_proxy'
+alias y="yes | head -n 100"
+alias c="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
+alias mongo="mongosh"
 alias pj="python -m json.tool"
-alias p="python3.10"
-alias pip="/usr/local/bin/pip3.10"
-alias pip3="/usr/local/bin/pip3.10"
+alias p="python3.11"
+alias pip="/usr/local/bin/pip3.11"
+alias pip3="/usr/local/bin/pip3.11"
 export PATH=$PATH:/usr/local/mysql/bin/
 export PATH=$PATH:/usr/local/mongodb-macos-x86_64-4.4.2/bin
-alias python='/usr/local/bin/python3.10'
+alias python='/usr/local/bin/python3.11'
 export GO111MODULE=on
 alias gol='export GOOS=linux GOARCH=amd64; go build; export GOOS="" GOARCH=""'
 alias dcs='docker container stop'
@@ -216,11 +221,9 @@ alias curl2="/usr/bin/curl"
 alias curl3="/usr/local/Cellar/curl/7.80.0/bin/curl"
 alias runm="mongod --config /usr/local/etc/mongod.conf"
 alias gb="go build"
+alias gbn="go1.20rc2 build"
 alias gi="go install"
 alias gt="go test"
-alias gnt="go1.19rc2 test"
-alias gnb="go1.19rc2 build"
-alias emoji="curl https://dilfish.icu/emoji"
 alias exifmod='exiftool -GPSDateStamp="1970:01:02" -GPSDateStamp=0 -GPSLongitude=180 -GPSLatitude=90 -GPSAltitude=8848.86 -software="Windows 1.1.330(2QEMT35U3X1)" -model="Isaac Newton" -DateTime="1970:01:01 00:00:03" -DateTimeDigital="1970:01:01 00:00:04" -DateTimeOriginal="1970:01:01 00:00:07" -CreateDate="1970:01:01 00:00:05" -ModifyDate="1970:01:01 00:00:06" -Make="Albert Einstein" -Manufacturer="James Clerk Maxwell" -HostComputer="Richard Feynman" -ContentIdentifier="Galileo Galilei" -ProfileCopyright="CarlFGauss" -DateCreated="1970:01:01 00:00:07"'
 
 function gmi() {
