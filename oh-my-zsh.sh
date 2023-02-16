@@ -242,3 +242,5 @@ export GOPROXY=https://goproxy.cn
 export QBOXROOT=/Users/dilfish/qiniu
 export PATH=$PATH:/usr/local/Cellar/rabbitmq/3.8.16/sbin
 #source ~/.iterm2_shell_integration.zsh
+export PATH=$PATH:/snap/bin
+export PATH=$PATH:/usr/games
