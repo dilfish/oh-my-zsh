@@ -258,9 +258,10 @@ export GOPROXY=https://goproxy.cn
 export QBOXROOT=/Users/dilfish/qiniu
 export PATH=$PATH:/usr/local/Cellar/rabbitmq/3.8.16/sbin
 #source ~/.iterm2_shell_integration.zsh
-#
 export GITHUB_TOKEN=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
 export PATH=$PATH:/Users/dilfish/.cargo/bin/
 export DOCKER_HOST='unix:///Users/dilfish/.lima/docker/sock/docker.sock'
 export PATH=$PATH:/Users/dilfish/go/bin
 export GOPATH=/Users/dilfish/go
+export PATH=$PATH:/snap/bin
+export PATH=$PATH:/usr/games
