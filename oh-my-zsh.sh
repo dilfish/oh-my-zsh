@@ -57,14 +57,14 @@ mkdir -p "$ZSH_CACHE_DIR/completions"
 (( ${fpath[(Ie)"$ZSH_CACHE_DIR/completions"]} )) || fpath=("$ZSH_CACHE_DIR/completions" $fpath)
 
 # Check for updates on initial load...
-if [ "$DISABLE_AUTO_UPDATE" != "true" ]; then
-  source $ZSH/tools/check_for_upgrade.sh
+if [[ "$DISABLE_AUTO_UPDATE" != true ]]; then
+  source "$ZSH/tools/check_for_upgrade.sh"
 fi
 
 # Initializes Oh My Zsh
 
 # add a function path
-fpath=($ZSH/functions $ZSH/completions $fpath)
+fpath=("$ZSH/functions" "$ZSH/completions" $fpath)
 
 # Load all stock functions (from $fpath files) called below.
 autoload -U compaudit compinit
@@ -74,7 +74,6 @@ autoload -U compaudit compinit
 if [[ -z "$ZSH_CUSTOM" ]]; then
     ZSH_CUSTOM="$ZSH/custom"
 fi
-
 
 is_plugin() {
   local base_dir=$1
@@ -86,10 +85,10 @@ is_plugin() {
 # Add all defined plugins to fpath. This must be done
 # before running compinit.
 for plugin ($plugins); do
-  if is_plugin $ZSH_CUSTOM $plugin; then
-    fpath=($ZSH_CUSTOM/plugins/$plugin $fpath)
-  elif is_plugin $ZSH $plugin; then
-    fpath=($ZSH/plugins/$plugin $fpath)
+  if is_plugin "$ZSH_CUSTOM" "$plugin"; then
+    fpath=("$ZSH_CUSTOM/plugins/$plugin" $fpath)
+  elif is_plugin "$ZSH" "$plugin"; then
+    fpath=("$ZSH/plugins/$plugin" $fpath)
   else
     echo "[oh-my-zsh] plugin '$plugin' not found"
   fi
@@ -98,14 +97,14 @@ done
 # Figure out the SHORT hostname
 if [[ "$OSTYPE" = darwin* ]]; then
   # macOS's $HOST changes with dhcp, etc. Use ComputerName if possible.
-  SHORT_HOST=$(scutil --get ComputerName 2>/dev/null) || SHORT_HOST=${HOST/.*/}
+  SHORT_HOST=$(scutil --get ComputerName 2>/dev/null) || SHORT_HOST="${HOST/.*/}"
 else
-  SHORT_HOST=${HOST/.*/}
+  SHORT_HOST="${HOST/.*/}"
 fi
 
 # Save the location of the current completion dump file.
-if [ -z "$ZSH_COMPDUMP" ]; then
-  ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+if [[ -z "$ZSH_COMPDUMP" ]]; then
+  ZSH_COMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 fi
 
 # Construct zcompdump OMZ metadata
@@ -119,15 +118,15 @@ if ! command grep -q -Fx "$zcompdump_revision" "$ZSH_COMPDUMP" 2>/dev/null \
   zcompdump_refresh=1
 fi
 
-if [[ $ZSH_DISABLE_COMPFIX != true ]]; then
-  source $ZSH/lib/compfix.zsh
+if [[ "$ZSH_DISABLE_COMPFIX" != true ]]; then
+  source "$ZSH/lib/compfix.zsh"
   # If completion insecurities exist, warn the user
   handle_completion_insecurities
   # Load only from secure directories
-  compinit -i -C -d "${ZSH_COMPDUMP}"
+  compinit -i -C -d "$ZSH_COMPDUMP"
 else
   # If the user wants it, load from all found directories
-  compinit -u -C -d "${ZSH_COMPDUMP}"
+  compinit -u -C -d "$ZSH_COMPDUMP"
 fi
 
 # Append zcompdump metadata if missing
@@ -140,45 +139,52 @@ $zcompdump_revision
 $zcompdump_fpath
 EOF
 fi
-
 unset zcompdump_revision zcompdump_fpath zcompdump_refresh
-
 
 # Load all of the config files in ~/oh-my-zsh that end in .zsh
 # TIP: Add files you don't want in git to .gitignore
-for config_file ($ZSH/lib/*.zsh); do
-  custom_config_file="${ZSH_CUSTOM}/lib/${config_file:t}"
-  [ -f "${custom_config_file}" ] && config_file=${custom_config_file}
-  source $config_file
+for config_file ("$ZSH"/lib/*.zsh); do
+  custom_config_file="$ZSH_CUSTOM/lib/${config_file:t}"
+  [[ -f "$custom_config_file" ]] && config_file="$custom_config_file"
+  source "$config_file"
 done
+unset custom_config_file
 
 # Load all of the plugins that were defined in ~/.zshrc
 for plugin ($plugins); do
-  if [ -f $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh ]; then
-    source $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh
-  elif [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
-    source $ZSH/plugins/$plugin/$plugin.plugin.zsh
+  if [[ -f "$ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh" ]]; then
+    source "$ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh"
+  elif [[ -f "$ZSH/plugins/$plugin/$plugin.plugin.zsh" ]]; then
+    source "$ZSH/plugins/$plugin/$plugin.plugin.zsh"
   fi
 done
+unset plugin
 
 # Load all of your custom configurations from custom/
-for config_file ($ZSH_CUSTOM/*.zsh(N)); do
-  source $config_file
+for config_file ("$ZSH_CUSTOM"/*.zsh(N)); do
+  source "$config_file"
 done
 unset config_file
 
+
 # Load the theme
-if [ ! "$ZSH_THEME" = ""  ]; then
-  if [ -f "$ZSH_CUSTOM/$ZSH_THEME.zsh-theme" ]; then
+is_theme() {
+  local base_dir=$1
+  local name=$2
+  builtin test -f $base_dir/$name.zsh-theme
+}
+
+if [[ -n "$ZSH_THEME" ]]; then
+  if is_theme "$ZSH_CUSTOM" "$ZSH_THEME"; then
     source "$ZSH_CUSTOM/$ZSH_THEME.zsh-theme"
-  elif [ -f "$ZSH_CUSTOM/themes/$ZSH_THEME.zsh-theme" ]; then
+  elif is_theme "$ZSH_CUSTOM/themes" "$ZSH_THEME"; then
     source "$ZSH_CUSTOM/themes/$ZSH_THEME.zsh-theme"
-  else
+  elif is_theme "$ZSH/themes" "$ZSH_THEME"; then
     source "$ZSH/themes/$ZSH_THEME.zsh-theme"
+  else
+    echo "[oh-my-zsh] theme '$ZSH_THEME' not found"
   fi
 fi
-
-
 
 
 #Bash Insulter
@@ -188,13 +194,20 @@ fi
 
 #export GODEBUG=http2debug=2
 export GOROOT=/usr/local/go
-alias cm="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias goproxy='export http_proxy=http://127.0.0.1:1087 https_proxy=http://127.0.0.1:1087'
+alias disproxy='unset http_proxy https_proxy'
+alias y="yes | head -n 100"
+alias c="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
+alias mongo="mongosh"
 alias pj="python -m json.tool"
+alias p="python3.11"
+alias pip="/usr/local/bin/pip3.11"
+alias pip3="/usr/local/bin/pip3.11"
 export PATH=$PATH:/usr/local/mysql/bin/
 export PATH=$PATH:/usr/local/mongodb-macos-x86_64-4.4.2/bin
-alias python='/usr/local/bin/python3'
+alias python='/usr/local/bin/python3.11'
 export GO111MODULE=on
-alias 'python'='python3'
 alias gol='export GOOS=linux GOARCH=amd64; go build; export GOOS="" GOARCH=""'
 alias dcs='docker container stop'
 alias dcr='docker container rm'
@@ -205,14 +218,12 @@ alias gpum='git pull upstream master'
 alias gpud='git pull upstream develop'
 alias ls9="ls -la | awk '{print \$9}'"
 alias curl2="/usr/bin/curl"
-alias curl3="/usr/local/opt/curl/bin/curl"
+alias curl3="/usr/local/Cellar/curl/7.80.0/bin/curl"
 alias runm="mongod --config /usr/local/etc/mongod.conf"
 alias gb="go build"
-alias gi="go install"
+alias gbn="go build"
 alias gt="go test"
-alias emoji="curl https://dilfish.icu/emoji"
 alias exifmod='exiftool -GPSDateStamp="1970:01:02" -GPSDateStamp=0 -GPSLongitude=180 -GPSLatitude=90 -GPSAltitude=8848.86 -software="Windows 1.1.330(2QEMT35U3X1)" -model="Isaac Newton" -DateTime="1970:01:01 00:00:03" -DateTimeDigital="1970:01:01 00:00:04" -DateTimeOriginal="1970:01:01 00:00:07" -CreateDate="1970:01:01 00:00:05" -ModifyDate="1970:01:01 00:00:06" -Make="Albert Einstein" -Manufacturer="James Clerk Maxwell" -HostComputer="Richard Feynman" -ContentIdentifier="Galileo Galilei" -ProfileCopyright="CarlFGauss" -DateCreated="1970:01:01 00:00:07"'
-alias ggb="go build -\"gcflags=-G=3\""
 
 function gmi() {
     go mod init github.com/dilfish/$1
@@ -220,7 +231,12 @@ function gmi() {
 }
 
 function randstr() {
-    cat /dev/urandom | base64 | fold -w $1 | head
+    cat /dev/urandom | base64 | tr -dc 'a-zA-Z0-9' | fold -w $1 | head
+}
+
+function limaenv() {
+    export DOCKER_HOST=$(limactl list docker --format 'unix://{{.Dir}}/sock/docker.sock')
+    unset DOCKER_TLS_VERIFY
 }
 
 export PATH=$PATH:/usr/local/go/bin/
@@ -242,5 +258,10 @@ export GOPROXY=https://goproxy.cn
 export QBOXROOT=/Users/dilfish/qiniu
 export PATH=$PATH:/usr/local/Cellar/rabbitmq/3.8.16/sbin
 #source ~/.iterm2_shell_integration.zsh
+export GITHUB_TOKEN=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
+export PATH=$PATH:/Users/dilfish/.cargo/bin/
+export DOCKER_HOST='unix:///Users/dilfish/.lima/docker/sock/docker.sock'
+export PATH=$PATH:/Users/dilfish/go/bin
+export GOPATH=/Users/dilfish/go
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/games

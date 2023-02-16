@@ -9,7 +9,7 @@ alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
 alias -- -='cd -'
-alias 1='cd -'
+alias 1='cd -1'
 alias 2='cd -2'
 alias 3='cd -3'
 alias 4='cd -4'
@@ -26,7 +26,7 @@ function d () {
   if [[ -n $1 ]]; then
     dirs "$@"
   else
-    dirs -v | head -10
+    dirs -v | head -n 10
   fi
 }
 compdef _dirs d
@@ -41,7 +41,7 @@ alias la='ls -lAh'
 
 # added by sean
 
-alias sophon='cd /Users/dilfish/qiniu/net-sophon/src/qiniu.com/fusionsophon'
-alias gslb='cd /Users/dilfish/qiniu/net-gslb/src/qiniu.com/fusionartisan'
+alias sophon='cd /Users/dilfish/qiniu/net-sophon/'
+alias gslb='cd /Users/dilfish/qiniu/net-gslb/'
 alias dns='cd /Users/dilfish/qiniu/net-scheduler/QiniuANS/src/service/qansd'
-alias cdnmon='cd /Users/dilfish/qiniu/net-cdnmon/src/qiniu.com/fusionartisan'
+alias cdnmon='cd /Users/dilfish/qiniu/net-cdnmon/'
